@@ -1,0 +1,64 @@
+﻿@model MySystem.Models.Test.Class1
+
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+
+<html>
+<body>
+    <!-- Contents -->
+@using (Html.BeginForm("Test", "Test", FormMethod.Post))
+        {
+    @Html.Hidden("Active")
+    <form class="form-horizontal">
+        
+            <table class="table table-hover">
+                <thead>
+                    <tr><td><p>@ViewBag.Title<p></td></tr>
+                </thead>
+                <tbody>
+                    
+                <tbody>
+            </table>
+        <input type="submit" onclick="btn_D(1)" class="btn btn-success" value="確定">
+        
+    </form>
+        }
+    @using(Html.BeginForm())
+    {
+        @Html.Hidden("Active")
+        <input type="submit" onclick="btn_D(2)" class="btn btn-success" value="確定">
+    }
+</body>
+
+</html>
+
+<script type="text/JavaScript">
+    var MyCount = 0;
+    var intervalID;
+    function CountDown() {
+        var btnReg = document.getElementById("btnReg");
+        if (btnReg) {//此处要加上btnReg是否为空的判断，因为有可能网速很慢,setInterval后，btnReg按钮还没加载
+            if (MyCount <= 0) {
+                btnReg.disabled = "";       //或者btnReg.disabled="disabled"也可以
+                btnReg.value = "確定";
+                clearInterval(intervalID);  //清除定时器
+            }
+            else {
+                btnReg.value = "確定(還剩" + MyCount + "秒)";
+                MyCount--;
+            }
+        }
+    }
+    intervalID = setInterval("CountDown()", 1000);
+</script>
+
+<script type="text/JavaScript">
+    function btn_D(Type) {
+        if (Type == 1)
+            document.getElementById('Active').value = "Add";
+        if (Type == 2)
+            document.getElementById('Active').value = "modify";
+    }
+</script>

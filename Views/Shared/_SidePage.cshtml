@@ -1,0 +1,36 @@
+﻿@model MySystem.ViewModels.Function.SidePageViewModel
+@{
+    Layout = null;
+}
+<h4>項目清單</h4>
+<div class="panel-group">
+    <div class="panel panel-default">
+        @if (Model.MainFunctionList.Count() > 0)
+        { 
+          foreach(var data in Model.MainFunctionList)
+          { 
+             <div class="panel-heading">
+                 <h4 class="panel-title">
+                     <a data-toggle="collapse" href="#@data.MainFunctionName">@data.MainFunctionName</a>
+                 </h4>
+             </div>
+             <div id=@data.MainFunctionName class="panel-collapse collapse">
+                 @foreach(var subdata in Model.SubFunctionList.Where(x=> x.MainFunctionType == data.MainFunctionID))
+                 {
+                   <ul class="list-group">
+                       <li class="list-group-item"><a href=@subdata.SubFunctionURL>@subdata.SubFunctionCNName</a></li>
+                   </ul>
+                 }
+             </div>
+          }
+        }
+    </div>
+</div>
+@*<div class="input-group">
+    <input type="text" class="form-control" placeholder="Search Blog..">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </button>
+    </span>
+</div>*@

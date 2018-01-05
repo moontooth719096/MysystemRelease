@@ -1,0 +1,27 @@
+﻿@model MySystem.ViewModels.Function.MainFunctionViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>新增我的最愛網頁</h2>
+<!-- Contents -->
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">請輸入主功能資訊</div>
+            <div class="panel-body">
+                <div class="form-group row">
+                    <div class="col-xs-3">
+                        @Html.TextBoxFor(m => m.MainFunctionName, new { @class = "form-control", placeholder = "Enter WebName" })
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-success" type="submit" onclick="return confirm('確定要新增嗎?');">
+                    <span class="glyphicon glyphicon-ok-circle"></span> 確定新增
+                </button>
+            </div>
+        </div>
+    </div>
+}  

@@ -1,0 +1,76 @@
+﻿@model MySystem.Models.Account.UserData
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>新增使用者</h2>
+@using (@Html.BeginForm("CreatAccountPage", "Account", FormMethod.Post))
+{
+    <div class="row">
+      <div class="panel panel-default">
+          <div class="panel-heading">請輸入您的資料</div>
+          <div class="panel-body">
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label"><a class="text-warning">*</a>帳號:</label>
+                      @Html.TextBoxFor(m => m.UserAccount, new { @class = "form-control", placeholder = "Enter Account" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label"><a class="text-warning">*</a>密碼:</label>
+                      @Html.TextBoxFor(m => m.UserPassWord, new { type = "password", @class = "form-control", placeholder = "Enter PassWord" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label"><a class="text-warning">*</a>再輸入密碼:</label>
+                      @Html.TextBoxFor(m => m.UserPassWord, new { type = "password", @class = "form-control", placeholder = "ReEnter PassWord" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label">生日:</label>
+                      @Html.TextBoxFor(m => m.UserBirthday, new { @class = "form-control", placeholder = "Enter Birthday" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-8">
+                      <label class="control-label"><a class="text-warning">*</a>Email:</label>
+                      @Html.TextBoxFor(m => m.UserEmail, new { @class = "form-control", placeholder = "Enter Email" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label">電話號碼:</label>
+                      @Html.TextBoxFor(m => m.UserPhoneNumber, new { @class = "form-control", placeholder = "Enter PhoneNumber" })
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-3">
+                      <label class="control-label"><a class="text-warning">*</a>性別:</label>
+                      @Html.RadioButtonFor(m => m.UserGender,"男性")男性
+                      @Html.RadioButtonFor(m => m.UserGender,"女性")女性
+                  </div>                  
+              </div>
+              <div class="form-group row">
+                  <div class="col-xs-8">
+                      <label class="control-label">地址:</label>
+                      @Html.TextBoxFor(m => m.UserAddress, new { @class = "form-control", placeholder = "Enter Address" })
+                  </div>
+              </div>
+          </div>
+          <div class="panel-footer">
+              <button class="btn btn-success" type="submit">
+                  <span class="glyphicon glyphicon-ok-circle"></span> 確認送出
+              </button>
+              <button class="btn btn-success" type="button" onclick="location.href = 'LogInPage'">
+                  <span class="glyphicon glyphicon-remove-circle"></span> 取消
+              </button>
+              <button class="btn btn-success" type="button" onclick="location.href = 'CreatAccountPage'">
+                  <span class="glyphicon glyphicon-refresh"></span> 清空
+              </button>
+          </div>
+     </div>
+  </div>
+}
